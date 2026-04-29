@@ -17,9 +17,7 @@
       --gold: #f59e0b;
       --shadow: 0 20px 50px rgba(0,0,0,0.35);
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
@@ -28,12 +26,7 @@
       min-height: 100vh;
       padding: 24px;
     }
-
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
+    .container { max-width: 980px; margin: 0 auto; }
     .hero, .card {
       background: var(--card);
       border: 1px solid var(--card-border);
@@ -41,361 +34,235 @@
       border-radius: 24px;
       box-shadow: var(--shadow);
     }
-
-    .hero {
-      padding: 32px;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: 40px;
-      line-height: 1.1;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 18px;
-      margin-bottom: 24px;
-    }
-
-    .card {
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
+    .hero { padding: 32px; margin-bottom: 24px; text-align: center; }
+    h1 { margin: 0 0 8px; font-size: 40px; line-height: 1.1; }
+    .subtitle { color: var(--muted); font-size: 18px; margin-bottom: 24px; }
+    .card { padding: 24px; margin-bottom: 20px; }
+    label { display: block; margin-bottom: 10px; font-weight: 700; }
     input[type="text"] {
-      width: 100%;
-      padding: 16px;
-      border-radius: 14px;
+      width: 100%; padding: 16px; border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(255,255,255,0.06);
-      color: white;
-      font-size: 16px;
-      outline: none;
+      color: white; font-size: 16px; outline: none;
     }
-
     .start-btn, .submit-btn, .restart-btn {
-      border: none;
-      border-radius: 14px;
-      padding: 14px 22px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s ease;
+      border: none; border-radius: 14px; padding: 14px 22px;
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.2s ease;
     }
-
-    .start-btn, .submit-btn {
-      background: linear-gradient(135deg, var(--accent), #6366f1);
-      color: white;
-    }
-
-    .restart-btn {
-      background: linear-gradient(135deg, var(--accent-2), #16a34a);
-      color: white;
-    }
-
-    .start-btn:hover, .submit-btn:hover, .restart-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
+    .start-btn, .submit-btn { background: linear-gradient(135deg, var(--accent), #6366f1); color: white; }
+    .restart-btn { background: linear-gradient(135deg, var(--accent-2), #16a34a); color: white; }
+    .start-btn:hover, .submit-btn:hover, .restart-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
     .hidden { display: none; }
-
     .question {
-      padding: 20px;
-      border-radius: 18px;
+      padding: 20px; border-radius: 18px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 18px;
     }
-
-    .question h3 {
-      margin: 0 0 14px;
-      font-size: 20px;
-    }
-
+    .question h3 { margin: 0 0 14px; font-size: 20px; }
     .option {
-      display: block;
-      margin: 10px 0;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.04);
-      cursor: pointer;
+      display: block; margin: 10px 0; padding: 14px 16px;
+      border-radius: 14px; border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04); cursor: pointer;
     }
-
     .option input { margin-right: 10px; }
-
     .topbar {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-      color: var(--muted);
-      font-weight: 600;
+      display: flex; justify-content: space-between; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 18px;
+      color: var(--muted); font-weight: 600;
     }
-
-    .result-box {
-      text-align: center;
-      padding: 28px;
-    }
-
-    .score {
-      font-size: 56px;
-      font-weight: 800;
-      margin: 10px 0;
-      color: white;
-    }
-
-    .rating {
-      font-size: 22px;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
+    .result-box { text-align: center; padding: 28px; }
+    .score { font-size: 56px; font-weight: 800; margin: 10px 0; color: white; }
+    .rating { font-size: 22px; color: var(--gold); font-weight: 700; margin-bottom: 12px; }
     .answer-item {
-      text-align: left;
-      margin: 12px 0;
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.05);
+      text-align: left; margin: 12px 0; padding: 14px;
+      border-radius: 14px; background: rgba(255,255,255,0.05);
     }
-
     .correct { border-left: 5px solid var(--accent-2); }
-    .wrong { border-left: 5px solid var(--danger); }
-
-    .leaderboard li {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .wrong   { border-left: 5px solid var(--danger); }
+    .lb-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 8px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      gap: 8px;
     }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 30px; }
-      .score { font-size: 40px; }
+    .lb-rank { font-size: 20px; width: 36px; text-align: center; }
+    .lb-name { flex: 1; font-weight: 600; }
+    .lb-score { font-weight: 700; color: var(--accent); font-size: 18px; }
+    .lb-badge {
+      font-size: 12px; padding: 3px 10px; border-radius: 20px;
+      font-weight: 700;
     }
+    .badge-outstanding { background:#7c3aed; color:#fff; }
+    .badge-excellent    { background:#0ea5e9; color:#fff; }
+    .badge-verygood     { background:#22c55e; color:#fff; }
+    .badge-good         { background:#f59e0b; color:#fff; }
+    .badge-practice     { background:#f97316; color:#fff; }
+    .badge-study        { background:#ef4444; color:#fff; }
+    .lb-loading { color: var(--muted); padding: 14px 0; }
+    .lb-refresh { background: none; border: 1px solid var(--card-border); color: var(--muted);
+      border-radius: 10px; padding: 6px 14px; cursor: pointer; font-size: 13px; float: right; }
+    .lb-refresh:hover { color: white; border-color: white; }
+    @media (max-width: 768px) { h1 { font-size: 30px; } .score { font-size: 40px; } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="hero">
-      <h1>Reported Speech Test</h1>
-      <div class="subtitle">15 multiple-choice questions on reported speech statements. Results appear after submission.</div>
-    </div>
+<div class="container">
+  <div class="hero">
+    <h1>&#128218; Reported Speech Test</h1>
+    <div class="subtitle">15 questions &bull; Reported speech statements only &bull; Results shown after submission</div>
+  </div>
 
-    <div class="card" id="introCard">
-      <label for="studentName">Enter your name to start</label>
-      <input id="studentName" type="text" placeholder="Student name" />
-      <br /><br />
-      <button class="start-btn" onclick="startQuiz()">Start Test</button>
-    </div>
+  <div class="card" id="introCard">
+    <label for="studentName">&#128100; Enter your name to begin</label>
+    <input id="studentName" type="text" placeholder="Your full name" />
+    <br /><br />
+    <button class="start-btn" onclick="startQuiz()">&#9654; Start Test</button>
+  </div>
 
-    <div id="quizSection" class="hidden">
-      <div class="card">
-        <div class="topbar">
-          <div id="welcome"></div>
-          <div>Questions: 15</div>
-          <div>Topic: Reported Speech</div>
-        </div>
-        <form id="quizForm"></form>
-        <button class="submit-btn" onclick="submitQuiz()">Submit Answers</button>
-      </div>
-    </div>
-
-    <div id="resultSection" class="hidden"></div>
-
+  <div id="quizSection" class="hidden">
     <div class="card">
-      <h2>Rating List</h2>
-      <ul id="leaderboard" class="leaderboard"></ul>
+      <div class="topbar">
+        <div id="welcome"></div>
+        <div>&#128203; 15 Questions</div>
+        <div>&#127979; Reported Speech</div>
+      </div>
+      <form id="quizForm"></form>
+      <button class="submit-btn" onclick="submitQuiz()">&#9989; Submit Answers</button>
     </div>
   </div>
 
-  <script>
-    const questions = [
-      {
-        sentence: 'Ali said, "I am tired."',
-        options: ['Ali said that he was tired.', 'Ali said that he is tired.', 'Ali said that I was tired.', 'Ali said he tired.'],
-        answer: 0
-      },
-      {
-        sentence: 'Sara said, "I have finished my homework."',
-        options: ['Sara said that she had finished her homework.', 'Sara said that she has finished her homework.', 'Sara said that she finished my homework.', 'Sara said that she had finish her homework.'],
-        answer: 0
-      },
-      {
-        sentence: 'Tom said, "I can swim very well."',
-        options: ['Tom said that he could swim very well.', 'Tom said that he can swim very well.', 'Tom said that I could swim very well.', 'Tom said that he swam very well.'],
-        answer: 0
-      },
-      {
-        sentence: 'They said, "We are watching TV."',
-        options: ['They said that they were watching TV.', 'They said that we were watching TV.', 'They said that they are watching TV.', 'They said that they watched TV now.'],
-        answer: 0
-      },
-      {
-        sentence: 'Lola said, "I will call you tomorrow."',
-        options: ['Lola said that she would call me the next day.', 'Lola said that she will call me tomorrow.', 'Lola said that she would call you tomorrow.', 'Lola said she would called me the next day.'],
-        answer: 0
-      },
-      {
-        sentence: 'Jamshid said, "I bought a new phone."',
-        options: ['Jamshid said that he had bought a new phone.', 'Jamshid said that he bought a new phone.', 'Jamshid said that I had bought a new phone.', 'Jamshid said that he has bought a new phone.'],
-        answer: 0
-      },
-      {
-        sentence: 'Mary said, "I was reading a book."',
-        options: ['Mary said that she had been reading a book.', 'Mary said that she was reading a book.', 'Mary said that I had been reading a book.', 'Mary said that she had reading a book.'],
-        answer: 0
-      },
-      {
-        sentence: 'John said, "I must leave early."',
-        options: ['John said that he had to leave early.', 'John said that he must left early.', 'John said that he has to leave early.', 'John said that I had to leave early.'],
-        answer: 0
-      },
-      {
-        sentence: 'The teacher said, "The earth is round."',
-        options: ['The teacher said that the earth is round.', 'The teacher said that the earth was round only then.', 'The teacher said that the earth had been round.', 'The teacher said the earth round.'],
-        answer: 0
-      },
-      {
-        sentence: 'Nodira said, "I may visit Bukhara."',
-        options: ['Nodira said that she might visit Bukhara.', 'Nodira said that she may visited Bukhara.', 'Nodira said that she might visited Bukhara.', 'Nodira said that I might visit Bukhara.'],
-        answer: 0
-      },
-      {
-        sentence: 'Bekzod said, "I do not like coffee."',
-        options: ['Bekzod said that he did not like coffee.', 'Bekzod said that he does not like coffee.', 'Bekzod said that I did not like coffee.', 'Bekzod said that he had not liked coffee.'],
-        answer: 0
-      },
-      {
-        sentence: 'Anna said, "I saw the film yesterday."',
-        options: ['Anna said that she had seen the film the day before.', 'Anna said that she saw the film yesterday.', 'Anna said that she had seen the film yesterday.', 'Anna said that I had seen the film the day before.'],
-        answer: 0
-      },
-      {
-        sentence: 'Rustam said, "I am going to study medicine."',
-        options: ['Rustam said that he was going to study medicine.', 'Rustam said that he is going to study medicine.', 'Rustam said that I was going to study medicine.', 'Rustam said that he was go to study medicine.'],
-        answer: 0
-      },
-      {
-        sentence: 'Dilnoza said, "I have been waiting for an hour."',
-        options: ['Dilnoza said that she had been waiting for an hour.', 'Dilnoza said that she has been waiting for an hour.', 'Dilnoza said that she had waiting for an hour.', 'Dilnoza said that I had been waiting for an hour.'],
-        answer: 0
-      },
-      {
-        sentence: 'Olim said, "I wrote the email this morning."',
-        options: ['Olim said that he had written the email that morning.', 'Olim said that he wrote the email this morning.', 'Olim said that he had wrote the email that morning.', 'Olim said that I had written the email that morning.'],
-        answer: 0
-      }
-    ];
+  <div id="resultSection" class="hidden"></div>
 
-    const form = document.getElementById('quizForm');
-    const resultSection = document.getElementById('resultSection');
-    const leaderboardEl = document.getElementById('leaderboard');
+  <div class="card">
+    <h2>&#127942; Global Rating List <button class="lb-refresh" onclick="loadLeaderboard()">&#8635; Refresh</button></h2>
+    <div id="leaderboard"><div class="lb-loading">Loading...</div></div>
+  </div>
+</div>
 
-    function renderLeaderboard() {
-      const data = JSON.parse(localStorage.getItem('reportedSpeechLeaderboard') || '[]');
-      const sorted = data.sort((a, b) => b.score - a.score).slice(0, 10);
-      leaderboardEl.innerHTML = sorted.length ? sorted.map((item, i) => `<li><span>#${i + 1} ${item.name}</span><strong>${item.score}/15</strong></li>`).join('') : '<li><span>No results yet</span><strong>—</strong></li>';
-    }
+<script>
+  const questions = [
+    { sentence: 'Ali said, "I am tired."', options: ['Ali said that he was tired.','Ali said that he is tired.','Ali said that I was tired.','Ali said he tired.'], answer: 0 },
+    { sentence: 'Sara said, "I have finished my homework."', options: ['Sara said that she had finished her homework.','Sara said that she has finished her homework.','Sara said that she finished my homework.','Sara said that she had finish her homework.'], answer: 0 },
+    { sentence: 'Tom said, "I can swim very well."', options: ['Tom said that he could swim very well.','Tom said that he can swim very well.','Tom said that I could swim very well.','Tom said that he swam very well.'], answer: 0 },
+    { sentence: 'They said, "We are watching TV."', options: ['They said that they were watching TV.','They said that we were watching TV.','They said that they are watching TV.','They said that they watched TV now.'], answer: 0 },
+    { sentence: 'Lola said, "I will call you tomorrow."', options: ['Lola said that she would call me the next day.','Lola said that she will call me tomorrow.','Lola said that she would call you tomorrow.','Lola said she would called me the next day.'], answer: 0 },
+    { sentence: 'Jamshid said, "I bought a new phone."', options: ['Jamshid said that he had bought a new phone.','Jamshid said that he bought a new phone.','Jamshid said that I had bought a new phone.','Jamshid said that he has bought a new phone.'], answer: 0 },
+    { sentence: 'Mary said, "I was reading a book."', options: ['Mary said that she had been reading a book.','Mary said that she was reading a book.','Mary said that I had been reading a book.','Mary said that she had reading a book.'], answer: 0 },
+    { sentence: 'John said, "I must leave early."', options: ['John said that he had to leave early.','John said that he must left early.','John said that he has to leave early.','John said that I had to leave early.'], answer: 0 },
+    { sentence: 'The teacher said, "The earth is round."', options: ['The teacher said that the earth is round.','The teacher said that the earth was round only then.','The teacher said that the earth had been round.','The teacher said the earth round.'], answer: 0 },
+    { sentence: 'Nodira said, "I may visit Bukhara."', options: ['Nodira said that she might visit Bukhara.','Nodira said that she may visited Bukhara.','Nodira said that she might visited Bukhara.','Nodira said that I might visit Bukhara.'], answer: 0 },
+    { sentence: 'Bekzod said, "I do not like coffee."', options: ['Bekzod said that he did not like coffee.','Bekzod said that he does not like coffee.','Bekzod said that I did not like coffee.','Bekzod said that he had not liked coffee.'], answer: 0 },
+    { sentence: 'Anna said, "I saw the film yesterday."', options: ['Anna said that she had seen the film the day before.','Anna said that she saw the film yesterday.','Anna said that she had seen the film yesterday.','Anna said that I had seen the film the day before.'], answer: 0 },
+    { sentence: 'Rustam said, "I am going to study medicine."', options: ['Rustam said that he was going to study medicine.','Rustam said that he is going to study medicine.','Rustam said that I was going to study medicine.','Rustam said that he was go to study medicine.'], answer: 0 },
+    { sentence: 'Dilnoza said, "I have been waiting for an hour."', options: ['Dilnoza said that she had been waiting for an hour.','Dilnoza said that she has been waiting for an hour.','Dilnoza said that she had waiting for an hour.','Dilnoza said that I had been waiting for an hour.'], answer: 0 },
+    { sentence: 'Olim said, "I wrote the email this morning."', options: ['Olim said that he had written the email that morning.','Olim said that he wrote the email this morning.','Olim said that he had wrote the email that morning.','Olim said that I had written the email that morning.'], answer: 0 }
+  ];
 
-    function startQuiz() {
-      const name = document.getElementById('studentName').value.trim();
-      if (!name) {
-        alert('Please enter your name.');
+  const medals = ['\uD83E\uDD47','\uD83E\uDD48','\uD83E\uDD49'];
+
+  function badgeClass(r) {
+    if (r === 'Outstanding') return 'badge-outstanding';
+    if (r === 'Excellent')    return 'badge-excellent';
+    if (r === 'Very Good')    return 'badge-verygood';
+    if (r === 'Good')         return 'badge-good';
+    if (r === 'Needs Practice') return 'badge-practice';
+    return 'badge-study';
+  }
+
+  async function loadLeaderboard() {
+    const el = document.getElementById('leaderboard');
+    el.innerHTML = '<div class="lb-loading">Loading...</div>';
+    try {
+      const res = await fetch('/api/leaderboard');
+      const { entries } = await res.json();
+      if (!entries || entries.length === 0) {
+        el.innerHTML = '<div class="lb-loading">No results yet. Be the first!</div>';
         return;
       }
-      localStorage.setItem('currentStudentName', name);
-      document.getElementById('introCard').classList.add('hidden');
-      document.getElementById('quizSection').classList.remove('hidden');
-      document.getElementById('welcome').textContent = `Student: ${name}`;
-      renderQuestions();
-    }
-
-    function renderQuestions() {
-      form.innerHTML = questions.map((q, i) => `
-        <div class="question">
-          <h3>${i + 1}. ${q.sentence}</h3>
-          ${q.options.map((opt, idx) => `
-            <label class="option">
-              <input type="radio" name="q${i}" value="${idx}"> ${opt}
-            </label>
-          `).join('')}
+      el.innerHTML = entries.map((e, i) => `
+        <div class="lb-row">
+          <div class="lb-rank">${i < 3 ? medals[i] : '#' + (i + 1)}</div>
+          <div class="lb-name">${e.name}</div>
+          <span class="lb-badge ${badgeClass(e.rating)}">${e.rating}</span>
+          <div class="lb-score">${e.score}/15</div>
         </div>
       `).join('');
+    } catch {
+      el.innerHTML = '<div class="lb-loading">Could not load leaderboard.</div>';
     }
+  }
 
-    function getRating(score) {
-      if (score === 15) return 'Outstanding';
-      if (score >= 13) return 'Excellent';
-      if (score >= 10) return 'Very Good';
-      if (score >= 7) return 'Good';
-      if (score >= 5) return 'Needs Practice';
-      return 'Keep Studying';
-    }
+  function getRating(score) {
+    if (score === 15) return 'Outstanding';
+    if (score >= 13)  return 'Excellent';
+    if (score >= 10)  return 'Very Good';
+    if (score >= 7)   return 'Good';
+    if (score >= 5)   return 'Needs Practice';
+    return 'Keep Studying';
+  }
 
-    async function submitQuiz() {
-      const name = localStorage.getItem('currentStudentName') || 'Unknown';
-      let score = 0;
-      const answers = questions.map((q, i) => {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        const chosen = selected ? Number(selected.value) : -1;
-        const correct = chosen === q.answer;
-        if (correct) score++;
-        return {
-          question: q.sentence,
-          selected: chosen,
-          correctAnswer: q.answer,
-          correct
-        };
-      });
+  function startQuiz() {
+    const name = document.getElementById('studentName').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    sessionStorage.setItem('studentName', name);
+    document.getElementById('introCard').classList.add('hidden');
+    document.getElementById('quizSection').classList.remove('hidden');
+    document.getElementById('welcome').textContent = '\uD83D\uDC64 ' + name;
+    renderQuestions();
+  }
 
-      const rating = getRating(score);
-      const board = JSON.parse(localStorage.getItem('reportedSpeechLeaderboard') || '[]');
-      board.push({ name, score, rating, date: new Date().toISOString() });
-      localStorage.setItem('reportedSpeechLeaderboard', JSON.stringify(board));
-      renderLeaderboard();
+  function renderQuestions() {
+    document.getElementById('quizForm').innerHTML = questions.map((q, i) => `
+      <div class="question">
+        <h3>${i + 1}. ${q.sentence}</h3>
+        ${q.options.map((opt, idx) => `
+          <label class="option"><input type="radio" name="q${i}" value="${idx}"> ${opt}</label>
+        `).join('')}
+      </div>`).join('');
+  }
 
-      await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, score, total: 15, answers, rating })
-      }).catch(() => {});
+  async function submitQuiz() {
+    const name = sessionStorage.getItem('studentName') || 'Unknown';
+    let score = 0;
+    const answers = questions.map((q, i) => {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      const chosen = sel ? Number(sel.value) : -1;
+      const correct = chosen === q.answer;
+      if (correct) score++;
+      return { question: q.sentence, selected: chosen, correctAnswer: q.answer, correct };
+    });
+    const rating = getRating(score);
 
-      document.getElementById('quizSection').classList.add('hidden');
-      resultSection.classList.remove('hidden');
-      resultSection.innerHTML = `
-        <div class="card result-box">
-          <h2>Result for ${name}</h2>
-          <div class="score">${score}/15</div>
-          <div class="rating">Rating: ${rating}</div>
-          <p>The correct answers are shown below.</p>
-          ${answers.map((a, i) => `
-            <div class="answer-item ${a.correct ? 'correct' : 'wrong'}">
-              <strong>${i + 1}. ${questions[i].sentence}</strong><br>
-              Your answer: ${a.selected >= 0 ? questions[i].options[a.selected] : 'No answer'}<br>
-              Correct answer: ${questions[i].options[questions[i].answer]}
-            </div>
-          `).join('')}
-          <br>
-          <button class="restart-btn" onclick="location.reload()">Take Again</button>
-        </div>
-      `;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, score, total: 15, answers, rating })
+    }).catch(() => {});
 
-    renderLeaderboard();
-  </script>
+    document.getElementById('quizSection').classList.add('hidden');
+    const rs = document.getElementById('resultSection');
+    rs.classList.remove('hidden');
+    rs.innerHTML = `
+      <div class="card result-box">
+        <h2>&#127942; Result for ${name}</h2>
+        <div class="score">${score}/15</div>
+        <div class="rating">&#11088; ${rating}</div>
+        <p style="color:var(--muted)">Correct answers are highlighted below.</p>
+        ${answers.map((a, i) => `
+          <div class="answer-item ${a.correct ? 'correct' : 'wrong'}">
+            <strong>${i + 1}. ${questions[i].sentence}</strong><br>
+            Your answer: ${a.selected >= 0 ? questions[i].options[a.selected] : '<em>No answer</em>'}<br>
+            &#9989; Correct: ${questions[i].options[questions[i].answer]}
+          </div>`).join('')}
+        <br>
+        <button class="restart-btn" onclick="location.reload()">&#8635; Take Again</button>
+      </div>`;
+
+    loadLeaderboard();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  loadLeaderboard();
+</script>
 </body>
 </html>
