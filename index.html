@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reported Speech Test</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.15);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --danger: #ef4444;
+      --gold: #f59e0b;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0%, #0f172a 50%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hero, .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 32px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 40px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .start-btn, .submit-btn, .restart-btn {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .start-btn, .submit-btn {
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      color: white;
+    }
+
+    .restart-btn {
+      background: linear-gradient(135deg, var(--accent-2), #16a34a);
+      color: white;
+    }
+
+    .start-btn:hover, .submit-btn:hover, .restart-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .hidden { display: none; }
+
+    .question {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 18px;
+    }
+
+    .question h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+
+    .option {
+      display: block;
+      margin: 10px 0;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+    }
+
+    .option input { margin-right: 10px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .result-box {
+      text-align: center;
+      padding: 28px;
+    }
+
+    .score {
+      font-size: 56px;
+      font-weight: 800;
+      margin: 10px 0;
+      color: white;
+    }
+
+    .rating {
+      font-size: 22px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .answer-item {
+      text-align: left;
+      margin: 12px 0;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .correct { border-left: 5px solid var(--accent-2); }
+    .wrong { border-left: 5px solid var(--danger); }
+
+    .leaderboard li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 30px; }
+      .score { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>Reported Speech Test</h1>
+      <div class="subtitle">15 multiple-choice questions on reported speech statements. Results appear after submission.</div>
+    </div>
+
+    <div class="card" id="introCard">
+      <label for="studentName">Enter your name to start</label>
+      <input id="studentName" type="text" placeholder="Student name" />
+      <br /><br />
+      <button class="start-btn" onclick="startQuiz()">Start Test</button>
+    </div>
+
+    <div id="quizSection" class="hidden">
+      <div class="card">
+        <div class="topbar">
+          <div id="welcome"></div>
+          <div>Questions: 15</div>
+          <div>Topic: Reported Speech</div>
+        </div>
+        <form id="quizForm"></form>
+        <button class="submit-btn" onclick="submitQuiz()">Submit Answers</button>
+      </div>
+    </div>
+
+    <div id="resultSection" class="hidden"></div>
+
+    <div class="card">
+      <h2>Rating List</h2>
+      <ul id="leaderboard" class="leaderboard"></ul>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        sentence: 'Ali said, "I am tired."',
+        options: ['Ali said that he was tired.', 'Ali said that he is tired.', 'Ali said that I was tired.', 'Ali said he tired.'],
+        answer: 0
+      },
+      {
+        sentence: 'Sara said, "I have finished my homework."',
+        options: ['Sara said that she had finished her homework.', 'Sara said that she has finished her homework.', 'Sara said that she finished my homework.', 'Sara said that she had finish her homework.'],
+        answer: 0
+      },
+      {
+        sentence: 'Tom said, "I can swim very well."',
+        options: ['Tom said that he could swim very well.', 'Tom said that he can swim very well.', 'Tom said that I could swim very well.', 'Tom said that he swam very well.'],
+        answer: 0
+      },
+      {
+        sentence: 'They said, "We are watching TV."',
+        options: ['They said that they were watching TV.', 'They said that we were watching TV.', 'They said that they are watching TV.', 'They said that they watched TV now.'],
+        answer: 0
+      },
+      {
+        sentence: 'Lola said, "I will call you tomorrow."',
+        options: ['Lola said that she would call me the next day.', 'Lola said that she will call me tomorrow.', 'Lola said that she would call you tomorrow.', 'Lola said she would called me the next day.'],
+        answer: 0
+      },
+      {
+        sentence: 'Jamshid said, "I bought a new phone."',
+        options: ['Jamshid said that he had bought a new phone.', 'Jamshid said that he bought a new phone.', 'Jamshid said that I had bought a new phone.', 'Jamshid said that he has bought a new phone.'],
+        answer: 0
+      },
+      {
+        sentence: 'Mary said, "I was reading a book."',
+        options: ['Mary said that she had been reading a book.', 'Mary said that she was reading a book.', 'Mary said that I had been reading a book.', 'Mary said that she had reading a book.'],
+        answer: 0
+      },
+      {
+        sentence: 'John said, "I must leave early."',
+        options: ['John said that he had to leave early.', 'John said that he must left early.', 'John said that he has to leave early.', 'John said that I had to leave early.'],
+        answer: 0
+      },
+      {
+        sentence: 'The teacher said, "The earth is round."',
+        options: ['The teacher said that the earth is round.', 'The teacher said that the earth was round only then.', 'The teacher said that the earth had been round.', 'The teacher said the earth round.'],
+        answer: 0
+      },
+      {
+        sentence: 'Nodira said, "I may visit Bukhara."',
+        options: ['Nodira said that she might visit Bukhara.', 'Nodira said that she may visited Bukhara.', 'Nodira said that she might visited Bukhara.', 'Nodira said that I might visit Bukhara.'],
+        answer: 0
+      },
+      {
+        sentence: 'Bekzod said, "I do not like coffee."',
+        options: ['Bekzod said that he did not like coffee.', 'Bekzod said that he does not like coffee.', 'Bekzod said that I did not like coffee.', 'Bekzod said that he had not liked coffee.'],
+        answer: 0
+      },
+      {
+        sentence: 'Anna said, "I saw the film yesterday."',
+        options: ['Anna said that she had seen the film the day before.', 'Anna said that she saw the film yesterday.', 'Anna said that she had seen the film yesterday.', 'Anna said that I had seen the film the day before.'],
+        answer: 0
+      },
+      {
+        sentence: 'Rustam said, "I am going to study medicine."',
+        options: ['Rustam said that he was going to study medicine.', 'Rustam said that he is going to study medicine.', 'Rustam said that I was going to study medicine.', 'Rustam said that he was go to study medicine.'],
+        answer: 0
+      },
+      {
+        sentence: 'Dilnoza said, "I have been waiting for an hour."',
+        options: ['Dilnoza said that she had been waiting for an hour.', 'Dilnoza said that she has been waiting for an hour.', 'Dilnoza said that she had waiting for an hour.', 'Dilnoza said that I had been waiting for an hour.'],
+        answer: 0
+      },
+      {
+        sentence: 'Olim said, "I wrote the email this morning."',
+        options: ['Olim said that he had written the email that morning.', 'Olim said that he wrote the email this morning.', 'Olim said that he had wrote the email that morning.', 'Olim said that I had written the email that morning.'],
+        answer: 0
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+    const resultSection = document.getElementById('resultSection');
+    const leaderboardEl = document.getElementById('leaderboard');
+
+    function renderLeaderboard() {
+      const data = JSON.parse(localStorage.getItem('reportedSpeechLeaderboard') || '[]');
+      const sorted = data.sort((a, b) => b.score - a.score).slice(0, 10);
+      leaderboardEl.innerHTML = sorted.length ? sorted.map((item, i) => `<li><span>#${i + 1} ${item.name}</span><strong>${item.score}/15</strong></li>`).join('') : '<li><span>No results yet</span><strong>—</strong></li>';
+    }
+
+    function startQuiz() {
+      const name = document.getElementById('studentName').value.trim();
+      if (!name) {
+        alert('Please enter your name.');
+        return;
+      }
+      localStorage.setItem('currentStudentName', name);
+      document.getElementById('introCard').classList.add('hidden');
+      document.getElementById('quizSection').classList.remove('hidden');
+      document.getElementById('welcome').textContent = `Student: ${name}`;
+      renderQuestions();
+    }
+
+    function renderQuestions() {
+      form.innerHTML = questions.map((q, i) => `
+        <div class="question">
+          <h3>${i + 1}. ${q.sentence}</h3>
+          ${q.options.map((opt, idx) => `
+            <label class="option">
+              <input type="radio" name="q${i}" value="${idx}"> ${opt}
+            </label>
+          `).join('')}
+        </div>
+      `).join('');
+    }
+
+    function getRating(score) {
+      if (score === 15) return 'Outstanding';
+      if (score >= 13) return 'Excellent';
+      if (score >= 10) return 'Very Good';
+      if (score >= 7) return 'Good';
+      if (score >= 5) return 'Needs Practice';
+      return 'Keep Studying';
+    }
+
+    async function submitQuiz() {
+      const name = localStorage.getItem('currentStudentName') || 'Unknown';
+      let score = 0;
+      const answers = questions.map((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        const chosen = selected ? Number(selected.value) : -1;
+        const correct = chosen === q.answer;
+        if (correct) score++;
+        return {
+          question: q.sentence,
+          selected: chosen,
+          correctAnswer: q.answer,
+          correct
+        };
+      });
+
+      const rating = getRating(score);
+      const board = JSON.parse(localStorage.getItem('reportedSpeechLeaderboard') || '[]');
+      board.push({ name, score, rating, date: new Date().toISOString() });
+      localStorage.setItem('reportedSpeechLeaderboard', JSON.stringify(board));
+      renderLeaderboard();
+
+      await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, score, total: 15, answers, rating })
+      }).catch(() => {});
+
+      document.getElementById('quizSection').classList.add('hidden');
+      resultSection.classList.remove('hidden');
+      resultSection.innerHTML = `
+        <div class="card result-box">
+          <h2>Result for ${name}</h2>
+          <div class="score">${score}/15</div>
+          <div class="rating">Rating: ${rating}</div>
+          <p>The correct answers are shown below.</p>
+          ${answers.map((a, i) => `
+            <div class="answer-item ${a.correct ? 'correct' : 'wrong'}">
+              <strong>${i + 1}. ${questions[i].sentence}</strong><br>
+              Your answer: ${a.selected >= 0 ? questions[i].options[a.selected] : 'No answer'}<br>
+              Correct answer: ${questions[i].options[questions[i].answer]}
+            </div>
+          `).join('')}
+          <br>
+          <button class="restart-btn" onclick="location.reload()">Take Again</button>
+        </div>
+      `;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    renderLeaderboard();
+  </script>
+</body>
+</html>
